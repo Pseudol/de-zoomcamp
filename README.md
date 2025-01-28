@@ -1,8 +1,9 @@
 # de-zoomcamp
 Solutions for data engineering zoomcamp cohort 2025
 
---3
+Q3
 
+```sql
 -- up to 1 mile trips
 
 select 
@@ -57,17 +58,19 @@ where lpep_dropoff_datetime::date between '2019-10-01' and '2019-10-31'
 and trip_distance > 10
 --group by lpep_dropoff_datetime::date
 ;
+```
 
 
 
-
---- 4
+Q4
+```sql
 select lpep_pickup_datetime::date 
 from public.green_taxi_trips
 where trip_distance = (select max(trip_distance) from public.green_taxi_trips);
+```
 
-
---5
+Q5
+```sql
 with top_loc as (
 
 select "Borough" || '/' || "Zone" as pickup_loc, sum(total_amount) total_amount
@@ -86,11 +89,12 @@ where lpep_pickup_datetime::date = '2019-10-18' --and "Borough" || '/' || "Zone"
 group by lpep_pickup_datetime::date,"Borough", "Zone"
 order by 2 desc
 limit 3
+```
 
 
+Q6
 
------- 6
-
+```sql
 select zz."Zone" as drop_loc, sum(tip_amount) tip
 from public.green_taxi_trips t
    join public.zones z on t."PULocationID" = z."LocationID"
@@ -107,3 +111,4 @@ where lpep_pickup_datetime::date = '2019-10-18' --and "Borough" || '/' || "Zone"
 group by lpep_pickup_datetime::date,"Borough", "Zone"
 order by 2 desc
 limit 3
+```
