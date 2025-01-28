@@ -1,6 +1,8 @@
 # de-zoomcamp
 Solutions for data engineering zoomcamp cohort 2025
 
+Week 1
+
 Q3
 
 ```sql
